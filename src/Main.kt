@@ -64,8 +64,8 @@ fun main()
                     playerList[n].endRound = false
                     while (true) {
 
-                        println("Player ${n + 1}'s hand: ${playerList[n].playerDeck}")
-                        println("Your hand is valued at: ${playerList[n].playerDeck.cardsValue()}")
+                        println("**Player ${n + 1}'s** hand: ${playerList[n].playerDeck}")
+                        println("Your hand is valued at: ${playerList[n].playerDeck.cardsValue()}\n")
 
                         //Display dealer hand
                         println("Dealer Hand: ${dealerDeck.getCard(0)} and [Hidden]")
@@ -96,13 +96,13 @@ fun main()
                 for(n in 0 until numberOfPlayers) {
                     //Reveal dealers cards
                     if(!playerList[n].isBusted) {
-                        println("Dealer cards: $dealerDeck")
+                        println("Dealer cards: $dealerDeck\n")
                     }
                     //See if dealer has more points than player
                     //Determine if busted
                     var bustedPlayers = 0
 
-                    if (dealerDeck.cardsValue() > playerList[n].playerDeck.cardsValue() && !playerList[n].endRound) {
+                    if (dealerDeck.cardsValue() > playerList[n].playerDeck.cardsValue() && dealerDeck.cardsValue() <= 21 && !playerList[n].endRound) {
                         println("Dealer beats Player ${n + 1}")
                         playerList[n].playerMoney -= playerList[n].playerBet
                         playerList[n].endRound = true
@@ -129,7 +129,7 @@ fun main()
 
 
                     //Determine if push
-                    if (playerList[n].playerDeck.cardsValue() == dealerDeck.cardsValue()) {
+                    if (playerList[n].playerDeck.cardsValue() == dealerDeck.cardsValue()&& !playerList[n].endRound) {
                         println("Dealer beats Player ${n + 1}")
                         playerList[n].playerMoney -= playerList[n].playerBet
                         playerList[n].endRound = true
@@ -147,7 +147,6 @@ fun main()
 
                     playerList[n].playerDeck.moveAllToDeck(playingDeck)
                 }
-
                 dealerDeck.moveAllToDeck(playingDeck)
                 //Check to see if players still have money
                 for(n in 0 until numberOfPlayers) {
@@ -262,14 +261,13 @@ fun playWithAI(playerDeck: Deck, playingDeck: FullDeck, dealerDeck: Deck)
             }
         }
         //Reveal dealers cards
-        println("Dealer cards: ${dealerDeck.toString()}")
+        println("Dealer cards: $dealerDeck")
         //See if dealer has more points than player
         //Determine if busted
         if (dealerDeck.cardsValue() > playerDeck.cardsValue() && !endRound) {
             println("Dealer beats you")
             playerMoney -= playerBet
             endRound = true
-            //test
         }
         //Dealer hits at 16, stand at 17
         while (dealerDeck.cardsValue() < 17 && !endRound) {
