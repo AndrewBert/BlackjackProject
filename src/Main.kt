@@ -120,9 +120,9 @@ fun main()
                         }
                     }
                     //Display total value for dealer
-                    println("Dealer's Hand is valued at ${dealerDeck.cardsValue()}")
+                    println("Dealer's Hand is valued at ${dealerDeck.cardsValue()}\n")
                     if (dealerDeck.cardsValue() > 21 && !playerList[n].endRound) {
-                        println("Dealer busts. Player ${n + 1} wins!")
+                        println("Dealer busts. Player ${n + 1} wins!\n")
                         playerList[n].playerMoney += playerList[n].playerBet
                         playerList[n].endRound = true
                     }
