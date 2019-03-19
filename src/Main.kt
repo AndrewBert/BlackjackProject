@@ -64,7 +64,7 @@ fun main()
                     playerList[n].endRound = false
                     while (true) {
 
-                        println("**Player ${n + 1}'s** hand: ${playerList[n].playerDeck}")
+                        println("\n**Player ${n + 1}'s** hand: ${playerList[n].playerDeck}")
                         println("Your hand is valued at: ${playerList[n].playerDeck.cardsValue()}\n")
 
                         //Display dealer hand
@@ -96,7 +96,7 @@ fun main()
                 for(n in 0 until numberOfPlayers) {
                     //Reveal dealers cards
                     if(!playerList[n].isBusted) {
-                        println("Dealer cards: $dealerDeck\n")
+                        println("Dealer cards: $dealerDeck")
                     }
                     //See if dealer has more points than player
                     //Determine if busted
@@ -116,7 +116,7 @@ fun main()
                         //Dealer hits at 16, stand at 17
                         while (dealerDeck.cardsValue() < 17 && !allPlayersBusted) {
                             dealerDeck.draw(playingDeck)
-                            println("Dealer draws ${dealerDeck.getCard(dealerDeck.deckSize() - 1)}")
+                            println("\nDealer draws ${dealerDeck.getCard(dealerDeck.deckSize() - 1)}")
                         }
                     }
                     //Display total value for dealer
@@ -136,11 +136,11 @@ fun main()
                     }
 
                     if (playerList[n].playerDeck.cardsValue() > dealerDeck.cardsValue() && !playerList[n].endRound) {
-                        println("Player ${n + 1} wins the hand!")
+                        println("Player ${n + 1} wins the hand!\n")
                         playerList[n].playerMoney += playerList[n].playerBet
                         playerList[n].endRound = true
                     } else if (!playerList[n].endRound) {
-                        println("Player ${n + 1} loses the hand")
+                        println("Player ${n + 1} loses the hand\n")
                         playerList[n].playerMoney -= playerList[n].playerBet
                         playerList[n].endRound = true
                     }
@@ -158,7 +158,7 @@ fun main()
                         endGame = true
                     }
                 }
-                println("End of hand.")
+                println("End of hand.\n")
             }
         println("Game over! All players out of money.")
     }
