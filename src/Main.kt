@@ -269,6 +269,7 @@ fun playWithAI(playerDeck: Deck, playingDeck: FullDeck, dealerDeck: Deck)
             println("Dealer beats you")
             playerMoney -= playerBet
             endRound = true
+            //test
         }
         //Dealer hits at 16, stand at 17
         while (dealerDeck.cardsValue() < 17 && !endRound) {
