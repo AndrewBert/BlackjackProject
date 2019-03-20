@@ -3,15 +3,16 @@ import java.util.Scanner
 fun main()
 {
 
-    println("Welcome to Blackjack!")
+    println("Welcome to Blackjack!\n")
 
     val userInput = Scanner(System.`in`)
 
     var playWithHumans = false
 
-    println("Would you like to play with AI(1) or humans(2)?")
-    if (userInput.nextInt() == 2)
-    {
+    println("Would you like to play with AI(1) or Humans(2)?")
+    require(userInput.nextInt() == 1 || userInput.nextInt() == 2) {"Not an acceptable input type"}
+
+    if (userInput.nextInt() == 2) {
         playWithHumans = true
     }
 
