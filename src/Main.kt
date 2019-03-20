@@ -1,4 +1,4 @@
-import java.util.Scanner
+import java.util.*
 
 fun main()
 {
@@ -8,13 +8,20 @@ fun main()
     val userInput = Scanner(System.`in`)
 
     var playWithHumans = false
+    var gameMode = 0
 
-    println("Would you like to play with AI(1) or Humans(2)?")
-    require(userInput.nextInt() == 1 || userInput.nextInt() == 2) {"Not an acceptable input type"}
+        println("Would you like to play with AI(1) or Humans(2)?")
+        //make sure user enters 1 or 2
+        while (gameMode!= 1 && gameMode != 2) {
+            gameMode = userInput.nextInt()
+        }
 
-    if (userInput.nextInt() == 2) {
+    if(gameMode == 2)
+    {
         playWithHumans = true
     }
+
+
 
     //Create playing deck
     val playingDeck = FullDeck()
@@ -40,7 +47,7 @@ fun main()
                 //Play on!
                 for (n in 0 until numberOfPlayers) {
                     //Take players bet
-                    println("Player ${n+1} you have ${playerList[n].playerMoney}, how much would you like to bet?")
+                    println("Player ${n+1} you have ${playerList[n].playerMoney}, how much would you like to bet?(5-20)")
                     playerList[n].playerBet = userInput.nextInt()
                     //todo add a try-catch
                     if (playerList[n].playerBet > playerList[n].playerMoney) {
